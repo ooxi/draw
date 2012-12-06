@@ -15,7 +15,8 @@
  */
 'use strict';
 var async = require('async');
-var express = require("express");
+var express = require('express');
+var socket = require('socket.io');
 var ueberDB = require('ueberDB');
 
 
@@ -43,6 +44,11 @@ exports.Server = function(configuration, cb) {
    * Express application handle
    */
   var _app;
+
+  /**
+   * Socket.IO handle
+   */
+  var _io;
 
 
 
@@ -86,6 +92,11 @@ exports.Server = function(configuration, cb) {
          console.log('Request %j', req);
          res.sendfile(__dirname + '/src/static/html/draw.html');
       });
+
+      /* Start express server
+       */
+      var server = app.listen(configuration.port);
+      _io = socket.listen(server);
     }
 
 
