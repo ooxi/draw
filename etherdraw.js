@@ -72,6 +72,7 @@ exports.Server = function(configuration, cb) {
     },
 
 
+
     /* Express setup
      */
     function(cb) {
@@ -95,9 +96,19 @@ exports.Server = function(configuration, cb) {
 
       /* Start express server
        */
-      var server = app.listen(configuration.port);
+      var server = _app.listen(configuration.port);
       _io = socket.listen(server);
+      cb();
+    },
+
+
+
+    /* Register socket.io handler
+     */
+    function(cb) {
+      cb();
     }
+
 
 
   /* Last but not least invoke callback given at object creation
