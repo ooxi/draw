@@ -22,7 +22,7 @@ var EtherDraw = require('./etherdraw.js');
  */
 var configuration = {
   port: 3000,
-  database: {
+  persistence: {
     implementation: 'dirty'
   }
 }

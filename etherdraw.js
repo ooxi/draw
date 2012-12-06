@@ -53,7 +53,7 @@ exports.Server = function(configuration, cb) {
           configuration.persistence.implementation,
           configuration.persistence.properties
       );
-
+console.log('database %j', database);
       database.init(function(err) {
         cb(err);
       });
