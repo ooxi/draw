@@ -15,6 +15,7 @@
  */
 'use strict';
 var async = require('async');
+var express = require("express");
 var ueberDB = require('ueberDB');
 
 
@@ -38,6 +39,11 @@ exports.Server = function(configuration, cb) {
    */
   var _db;
 
+  /**
+   * Express application handle
+   */
+  var _app;
+
 
 
 
@@ -53,7 +59,7 @@ exports.Server = function(configuration, cb) {
           configuration.persistence.implementation,
           configuration.persistence.properties
       );
-console.log('database %j', database);
+
       database.init(function(err) {
         cb(err);
       });
@@ -63,19 +69,20 @@ console.log('database %j', database);
     /* Express setup
      */
     function(cb) {
+      _app = express();
 
       /* Since _all_ requests served by EtherDraw in production are dynamic,
        * installing session parsers first does not do any harm
        */
-      app.use(express.cookieParser());
-      app.use(express.session({
+      _app.use(express.cookieParser());
+      _app.use(express.session({
           secret: 'secret',
           key: 'express.sid'
       }));
 
       /* TODO Embedd stroke data in response to save an additional roundtrip
        */
-      app.get('/d/*', function(req, res){
+      _app.get('/d/*', function(req, res){
          console.log('Request %j', req);
          res.sendfile(__dirname + '/src/static/html/draw.html');
       });
