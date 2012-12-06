@@ -41,9 +41,10 @@ exports.Server = function(configuration, cb) {
   var _db;
 
   /**
-   * Express application handle
+   * Express application handle and node http server
    */
   var _app;
+  var _http;
 
   /**
    * Socket.IO handle
@@ -94,11 +95,9 @@ exports.Server = function(configuration, cb) {
          res.sendfile(__dirname + '/src/static/html/draw.html');
       });
 
-      /* Start express server
+      /* Create server, but do not bind to any interface yet
        */
-      var server = _app.listen(configuration.port);
-console.log('server %j', server);
-      _io = socket.listen(server);
+      _http = require('http').createServer(app);
       cb();
     },
 
@@ -107,6 +106,17 @@ console.log('server %j', server);
     /* Register socket.io handler
      */
     function(cb) {
+      _io = socket.listen(_http);
+      _io.sockets.on('connection', onConnection);
+
+      cb();
+    },
+
+
+    /* Listen on configured interface
+     */
+    function(cb) {
+      _http.listen(configuration.port);
       cb();
     }
 
