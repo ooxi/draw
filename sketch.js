@@ -27,8 +27,20 @@
  */
 exports.sketch = function(db, id, cb) {
 
+	/**
+	 * Strokes stored on persistent medium
+	 */
 	var strokes = [];
 
+	/**
+	 * Volatile stroke information cache, consisting of a mapping from
+	 * session id to the last stroke index already send to the client
+	 *
+	 * This object can be pruned at any time, which will cause all clients
+	 * to receive the hole sketch (which does not do any harm, since the
+	 * clients are aware of which strokes they already have received)
+	 */
+	var cache = {};
 
 
 
