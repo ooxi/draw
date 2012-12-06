@@ -39,6 +39,9 @@ exports.sketch = function(db, id, cb) {
 	 */
 	this.append = function(stroke) {
 		
+		/* TODO Add sanity checks
+		 */
+		strokes.push(stroke);
 	};
 
 
