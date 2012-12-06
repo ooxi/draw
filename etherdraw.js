@@ -57,7 +57,7 @@ exports.Server = function(configuration, cb) {
 
   /* Will be invoked as soon as a client connects to a sketch
    */
-  var onConnect = function(socket) {
+  var onConnection = function(socket) {
     console.log('Client connected');
   };
 
