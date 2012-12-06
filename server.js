@@ -86,14 +86,14 @@ io.sockets.on('connection', function (socket) {
 
   // EVENT: User stops drawing something
   socket.on('draw:progress', function (uid, co_ordinates) {
-    console.log(co_ordinates);
+    console.log('draw:progress %j', co_ordinates);
     io.sockets.emit('draw:progress', uid, co_ordinates);
 
   });
 
   // EVENT: User stops drawing something
   socket.on('draw:end', function (uid, co_ordinates) {
-    console.log(co_ordinates);
+    console.log('draw:end %j', co_ordinates);
     io.sockets.emit('draw:end', uid, co_ordinates);
 
   });
