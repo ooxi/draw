@@ -63,6 +63,22 @@ exports.EtherDraw = function(configuration, cb) {
     /* Express setup
      */
     function(cb) {
+
+      /* Since _all_ requests served by EtherDraw in production are dynamic,
+       * installing session parsers first does not do any harm
+       */
+      app.use(express.cookieParser());
+      app.use(express.session({
+          secret: 'secret',
+          key: 'express.sid'
+      }));
+
+      /* TODO Embedd stroke data in response to save an additional roundtrip
+       */
+      app.get('/d/*', function(req, res){
+         console.log('Request %j', req);
+         res.sendfile(__dirname + '/src/static/html/draw.html');
+      });
     }
 
 
