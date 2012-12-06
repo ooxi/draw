@@ -7,6 +7,7 @@ A collaborative drawing tool
 Requirements
 ------------
 
+ * [async](https://github.com/caolan/async)
  * [Express](http://expressjs.com/)
  * [Socket IO](http://socket.io/)
  * [ueberDB](https://github.com/Pita/ueberDB)
