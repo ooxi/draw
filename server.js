@@ -39,7 +39,7 @@ var server = new EtherDraw.Server(configuration, function(err) {
 
 
 
-return;
+if (false) {
 
 /**
  * Module dependencies.
@@ -143,4 +143,6 @@ io.sockets.on('connection', function (socket) {
   
 });
 
+
+}
 
