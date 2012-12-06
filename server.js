@@ -93,7 +93,7 @@ io.sockets.on('connection', function (socket) {
 
   // EVENT: User stops drawing something
   socket.on('draw:end', function (uid, co_ordinates) {
-    console.log('draw:end %j', co_ordinates);
+    throw co_ordinates;
     io.sockets.emit('draw:end', uid, co_ordinates);
 
   });
