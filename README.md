@@ -1,10 +1,12 @@
+EtherDraw
+=========
+
 A collaborative drawing tool
 
-Uses...
 
-* Socket IO
-* Express
-* Jade
+Requirements
+------------
 
-Mostly for demoing purposes..
+ * [Socket IO](http://socket.io/)
+ * [Express](http://expressjs.com/)
 
