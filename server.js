@@ -30,6 +30,9 @@ var configuration = {
  *
  */
 
+// DATABASE CONNECTIVITY
+var db = ueberDb.database(
+
 // SESSIONS
 app.use(express.cookieParser());
 app.use(express.session({
