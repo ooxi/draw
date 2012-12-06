@@ -34,7 +34,7 @@ exports.sketch = function(db, id, cb) {
 
 	/**
 	 * Volatile stroke information cache, consisting of a mapping from
-	 * session id to the last stroke index already send to the client
+	 * session id to the first stroke index not yet send to the client
 	 *
 	 * This object can be pruned at any time, which will cause all clients
 	 * to receive the hole sketch (which does not do any harm, since the
@@ -63,6 +63,24 @@ exports.sketch = function(db, id, cb) {
 	 *     strokes will cause the client to miss some
 	 */
 	this.updates = function(session) {
+
+//		/* Empty sketch
+//		 */
+//		if (0 === strokes.length) {
+//			return [];
+//		}
+
+		/* Information cache populated?
+		 */
+		var index = cache.hasOwnProperty(session)
+			? cache[session]
+			: 0
+		;
+		cache[session] = strokes.length;
+
+		/* Retrieve subset of strokes
+		 */
+		return strokes.slice(index);
 	};
 
 
