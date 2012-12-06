@@ -54,9 +54,9 @@ exports.Server = function(configuration, cb) {
           configuration.persistence.properties
       );
 
-      database.init(err) {
+      database.init(function(err) {
         cb(err);
-      }
+      });
     },
 
 
