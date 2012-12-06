@@ -56,6 +56,15 @@ exports.sketch = function(db, id, cb) {
 		strokes.push(stroke);
 	};
 
+	/**
+	 * Returns all strokes to be send to a session
+	 *
+	 * @warning Calling this method without ensuring the client receives all
+	 *     strokes will cause the client to miss some
+	 */
+	this.updates = function(session) {
+	};
+
 
 
 	/* TODO Load strokes from database
