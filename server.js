@@ -17,10 +17,21 @@ var EtherDraw = require('etherdraw');
 
 
 
-var server = EtherDraw.Server({
+/* TODO Configuration should be read from file
+ */
+var configuration = {
   port: 3000
+}
+
+
+/* Initialize server
+ */
+var server = EtherDraw.Server(configuration, function(err) {
+  if (err) throw err;
+  console.log('EtherDraw up and running :-)');
 });
-console.log('a');
+
+
 
 
 
