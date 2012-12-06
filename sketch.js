@@ -30,66 +30,66 @@
  */
 exports.sketch = function(db, id, cb) {
 
-	/**
-	 * Strokes stored on persistent medium
-	 */
-	var strokes = [];
+  /**
+   * Strokes stored on persistent medium
+   */
+  var strokes = [];
 
-	/**
-	 * Volatile stroke information cache, consisting of a mapping from
-	 * session id to the first stroke index not yet send to the client
-	 *
-	 * This object can be pruned at any time, which will cause all clients
-	 * to receive the hole sketch (which does not do any harm, since the
-	 * clients are aware of which strokes they already have received)
-	 */
-	var cache = {};
-
-
-
-
-
-	/**
-	 * Appends a new stroke to the sketch
-	 *
-	 * @param stroke Stroke to append, will be sanity checked inside
-	 */
-	this.append = function(stroke) {
-		
-		/* TODO Add sanity checks
-		 */
-		strokes.push(stroke);
-	};
-
-
-
-	/**
-	 * Returns all strokes to be send to a session
-	 *
-	 * @warning Calling this method without ensuring the client receives all
-	 *     strokes will cause the client to miss some
-	 */
-	this.updates = function(session) {
-
-		/* Information cache populated?
-		 */
-		var index = cache.hasOwnProperty(session)
-			? cache[session]
-			: 0
-		;
-		cache[session] = strokes.length;
-
-		/* Retrieve subset of strokes
-		 */
-		return strokes.slice(index);
-	};
+  /**
+   * Volatile stroke information cache, consisting of a mapping from
+   * session id to the first stroke index not yet send to the client
+   *
+   * This object can be pruned at any time, which will cause all clients
+   * to receive the hole sketch (which does not do any harm, since the
+   * clients are aware of which strokes they already have received)
+   */
+  var cache = {};
 
 
 
 
 
-	/* TODO Load strokes from database
-	 */
-	cb();
+  /**
+   * Appends a new stroke to the sketch
+   *
+   * @param stroke Stroke to append, will be sanity checked inside
+   */
+  this.append = function(stroke) {
+    
+    /* TODO Add sanity checks
+     */
+    strokes.push(stroke);
+  };
+
+
+
+  /**
+   * Returns all strokes to be send to a session
+   *
+   * @warning Calling this method without ensuring the client receives all
+   *     strokes will cause the client to miss some
+   */
+  this.updates = function(session) {
+
+    /* Information cache populated?
+     */
+    var index = cache.hasOwnProperty(session)
+        ? cache[session]
+        : 0
+    ;
+    cache[session] = strokes.length;
+
+    /* Retrieve subset of strokes
+     */
+    return strokes.slice(index);
+  };
+
+
+
+
+
+  /* TODO Load strokes from database
+   */
+  cb();
 };
 

@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+var async = require('async');
 
 
 
@@ -28,5 +29,7 @@
  *     are an error in production!
  */
 exports.EtherDraw = function(configuration) {
+
+  async.seriel
 };
 
