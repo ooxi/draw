@@ -97,7 +97,7 @@ exports.Server = function(configuration, cb) {
 
       /* Create server, but do not bind to any interface yet
        */
-      _http = require('http').createServer(app);
+      _http = require('http').createServer(_app);
       cb();
     },
 
