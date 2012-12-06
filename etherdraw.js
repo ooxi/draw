@@ -13,7 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+'use strict';
 var async = require('async');
+var ueberDB = require('ueberDB');
 
 
 
@@ -23,13 +25,50 @@ var async = require('async');
  * Manages the entire EtherDraw server state
  *
  * @param configuration.port Port to listen on for HTTP requests
+ * @param cb Will be invoked as soon as EtherDraw is initialized
  *
  * @warning This application does not, and will never, support HTTPS. It should
  *     only be used behind an nginx frontend. Static files served by EtherDraw
  *     are an error in production!
  */
-exports.EtherDraw = function(configuration) {
+exports.EtherDraw = function(configuration, cb) {
 
-  async.seriel
+  /**
+   * ueberDb database handle
+   */
+  var _db;
+
+
+
+
+
+  /* Application initialization has to be done one by one
+   */
+  async.series([
+
+    /* Load persistence module
+     */
+    function(cb) {
+      var database = ueberDB.database(
+          configuration.persistence.implementation,
+          configuration.persistence.properties
+      );
+
+      database.init(err) {
+        cb(err);
+      }
+    },
+
+
+    /* Express setup
+     */
+    function(cb) {
+    }
+
+
+  /* Last but not least invoke callback given at object creation
+   */
+  ], cb);
+
 };
 
