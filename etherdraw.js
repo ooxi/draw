@@ -101,9 +101,12 @@ exports.Server = function(configuration, cb) {
       /* TODO Embedd stroke data in response to save an additional roundtrip
        */
       _app.get('/d/*', function(request, response){
-         console.log('Request %j', request.params);
          response.sendfile(__dirname + '/src/static/html/draw.html');
       });
+
+      /* @warning These files should not be served by EtherDraw in production!
+       */
+      _app.use("/static", express.static(__dirname + '/src/static'));
 
       /* Create server, but do not bind to any interface yet
        */
