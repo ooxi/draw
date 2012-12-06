@@ -13,13 +13,16 @@ app.configure(function(){
 var ueberDb = require('ueberDB');
 
 
+
 /**
  * A setting, just one
+ *
+ * TODO Should be read from file
  */
 
-var port = 3000;
-
-
+var configuration = {
+  port: 3000
+};
 
 
 
@@ -62,7 +65,7 @@ app.get('/d/*', function(req, res){
 app.use("/static", express.static(__dirname + '/src/static'));
 
 // LISTEN FOR REQUESTS
-var server = app.listen(port);
+var server = app.listen(configuration.port);
 var io = socket.listen(server);
 
 // SOCKET IO
