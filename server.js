@@ -31,7 +31,7 @@ var configuration = {
  */
 
 // DATABASE CONNECTIVITY
-var db = ueberDb.database(configuration.database
+//var db = ueberDb.database(configuration.database
 
 // SESSIONS
 app.use(express.cookieParser());
@@ -86,14 +86,14 @@ io.sockets.on('connection', function (socket) {
 
   // EVENT: User stops drawing something
   socket.on('draw:progress', function (uid, co_ordinates) {
-    
+    console.log(co_ordinates);
     io.sockets.emit('draw:progress', uid, co_ordinates);
 
   });
 
   // EVENT: User stops drawing something
   socket.on('draw:end', function (uid, co_ordinates) {
-    
+    console.log(co_ordinates);
     io.sockets.emit('draw:end', uid, co_ordinates);
 
   });
