@@ -7,8 +7,9 @@ A collaborative drawing tool
 Requirements
 ------------
 
- * [Socket IO](http://socket.io/)
  * [Express](http://expressjs.com/)
+ * [Socket IO](http://socket.io/)
+ * [ueberDB](https://github.com/Pita/ueberDB)
 
 Demo
 ----
