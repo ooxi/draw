@@ -100,9 +100,9 @@ exports.Server = function(configuration, cb) {
 
       /* TODO Embedd stroke data in response to save an additional roundtrip
        */
-      _app.get('/d/*', function(req, res){
-         console.log('Request %j', req);
-         res.sendfile(__dirname + '/src/static/html/draw.html');
+      _app.get('/d/*', function(request, response){
+         console.log('Request %j', request.params);
+         response.sendfile(__dirname + '/src/static/html/draw.html');
       });
 
       /* Create server, but do not bind to any interface yet
