@@ -97,6 +97,7 @@ exports.Server = function(configuration, cb) {
       /* Start express server
        */
       var server = _app.listen(configuration.port);
+console.log('server %j', server);
       _io = socket.listen(server);
       cb();
     },
