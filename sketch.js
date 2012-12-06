@@ -44,6 +44,8 @@ exports.sketch = function(db, id, cb) {
 
 
 
+
+
 	/**
 	 * Appends a new stroke to the sketch
 	 *
@@ -56,6 +58,8 @@ exports.sketch = function(db, id, cb) {
 		strokes.push(stroke);
 	};
 
+
+
 	/**
 	 * Returns all strokes to be send to a session
 	 *
@@ -63,12 +67,6 @@ exports.sketch = function(db, id, cb) {
 	 *     strokes will cause the client to miss some
 	 */
 	this.updates = function(session) {
-
-//		/* Empty sketch
-//		 */
-//		if (0 === strokes.length) {
-//			return [];
-//		}
 
 		/* Information cache populated?
 		 */
@@ -82,6 +80,8 @@ exports.sketch = function(db, id, cb) {
 		 */
 		return strokes.slice(index);
 	};
+
+
 
 
 
