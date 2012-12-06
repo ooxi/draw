@@ -31,7 +31,7 @@ var ueberDB = require('ueberDB');
  *     only be used behind an nginx frontend. Static files served by EtherDraw
  *     are an error in production!
  */
-exports.EtherDraw = function(configuration, cb) {
+exports.Server = function(configuration, cb) {
 
   /**
    * ueberDb database handle
