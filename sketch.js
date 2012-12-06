@@ -24,6 +24,9 @@
  * @param db ueberDB database handle
  * @param id Sketch id, used for persistent storage
  * @param cb Will be invoked as soon as the sketch is initialized
+ *
+ * @warning Absolute authority over the sketch is assumed. Multiple processes
+ *     accessing the same sketch will result in manslaughter
  */
 exports.sketch = function(db, id, cb) {
 
