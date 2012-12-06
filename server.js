@@ -12,6 +12,7 @@ app.configure(function(){
 
 var ueberDb = require('ueberDB');
 
+
 /**
  * A setting, just one
  */
@@ -28,11 +29,17 @@ var port = 3000;
 
 // SESSIONS
 app.use(express.cookieParser());
-app.use(express.session({secret: 'secret', key: 'express.sid'}));
+app.use(express.session({
+  secret: 'secret',
+  key: 'express.sid'
+}));
 
 // DEV MODE
 app.configure('development', function(){
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+  app.use(express.errorHandler({
+    dumpExceptions: true,
+    showStack: true
+  }));
 });
 
 // PRODUCTON MODE
@@ -62,26 +69,26 @@ var io = socket.listen(server);
 var active_connections = 0;
 io.sockets.on('connection', function (socket) {
 
-  active_connections++
+  active_connections++;
 
   io.sockets.emit('user:connect', active_connections);
 
   socket.on('disconnect', function () {
-    active_connections--
+    active_connections--;
     io.sockets.emit('user:disconnect', active_connections);
   });
 
   // EVENT: User stops drawing something
   socket.on('draw:progress', function (uid, co_ordinates) {
     
-    io.sockets.emit('draw:progress', uid, co_ordinates)
+    io.sockets.emit('draw:progress', uid, co_ordinates);
 
   });
 
   // EVENT: User stops drawing something
   socket.on('draw:end', function (uid, co_ordinates) {
     
-    io.sockets.emit('draw:end', uid, co_ordinates)
+    io.sockets.emit('draw:end', uid, co_ordinates);
 
   });
   
