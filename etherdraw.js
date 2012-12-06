@@ -49,7 +49,7 @@ exports.Server = function(configuration, cb) {
     /* Load persistence module
      */
     function(cb) {
-      var database = ueberDB.database(
+      var database = new ueberDB.database(
           configuration.persistence.implementation,
           configuration.persistence.properties
       );

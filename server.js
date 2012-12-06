@@ -30,7 +30,7 @@ var configuration = {
 
 /* Initialize server
  */
-var server = EtherDraw.Server(configuration, function(err) {
+var server = new EtherDraw.Server(configuration, function(err) {
   if (err) throw err;
   console.log('EtherDraw up and running :-)');
 });
