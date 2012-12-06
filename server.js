@@ -10,6 +10,8 @@ app.configure(function(){
   app.use(express.static(__dirname + '/'));
 });
 
+var ueberDb = require('ueberDB');
+
 /**
  * A setting, just one
  */
