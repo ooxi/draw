@@ -55,6 +55,16 @@ exports.Server = function(configuration, cb) {
 
 
 
+  /* Will be invoked as soon as a client connects to a sketch
+   */
+  var onConnect = function(socket) {
+    console.log('Client connected');
+  };
+
+
+
+
+
   /* Application initialization has to be done one by one
    */
   async.series([
