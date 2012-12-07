@@ -27,7 +27,7 @@ var EtherDraw = EtherDraw || {};
 EtherDraw.Sketch = EtherDraw.Sketch || function(id, canvas) {
 
   // Create an empty project and a view for the canvas:
-  paper.setup(document.getElementById('sketch'));
+  paper.setup(canvas);
 
   // Create a Paper.js Path to draw a line into it:
   var path = new paper.Path();
