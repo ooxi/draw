@@ -75,12 +75,13 @@ exports.Server = function(configuration, cb) {
 
     /* From now on the client will only be interested in this sketch
      */
+    var client = socket.get('client');
+    console.log('[I]\tClient '+ client +' joined '+ id);
     socket.join(id);
 
     /* Load client and provide him with initial updates
      */
     getSketch(id, function(sketch) {
-      var client = socket.get('client');
       var updates = sketch.updates(client);
 
       for (var i = 0; i < updates.length; ++i) {
