@@ -103,6 +103,7 @@ exports.Server = function(configuration, cb) {
     /* Load client and provide him with initial updates
      */
     getSketch(id, function(sketch) {
+console.log('ss %j', sketch);
       var updates = sketch.updates(client);
 
       for (var i = 0; i < updates.length; ++i) {
