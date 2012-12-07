@@ -77,8 +77,7 @@ exports.Server = function(configuration, cb) {
     } else {
       _sketches[id] = new sketch.Sketch(_db, id, function(err) {
         if (err) throw err;
-console.log('o %j', _sketches);
-        cb(_sketches[id]);
+        cb(this);
       });
     }
   };

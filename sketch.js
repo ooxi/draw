@@ -91,6 +91,6 @@ exports.Sketch = function(db, id, cb) {
 
   /* TODO Load strokes from database
    */
-  cb();
+  cb.apply(this, []);
 };
 
