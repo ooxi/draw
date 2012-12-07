@@ -52,16 +52,38 @@ EtherDraw.Sketch = EtherDraw.Sketch || function(id, canvas, cb) {
    */
   paper.setup(canvas);
   var _path = new paper.Path();
+  var _tool = new paper.Tool();
 
 
 
-  /* Register callbacks as soon as connection is established
+
+
+  /* Register socket.io callbacks as soon as connection is established
    */
   _io.on('connect', function(socket) {
     _io.emit('etherdraw.join', id);
     cb();
   });
 
+
+
+
+  /* Register paper.js handler
+   */
+  _tool.onMouseDown = function(event) {
+    console.log(event);
+//    path = new paper.Path();
+//    path.fillColor = active_color_rgb;
+//    path.add(event.point);
+//    view.draw();
+//
+//    // The data we will send every 100ms on mouse drag
+//    path_to_send = {
+//        rgba: active_color_json,
+//        start: event.point,
+//        path: []
+//    };
+  };
 
 
 
