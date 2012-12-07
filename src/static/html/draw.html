@@ -3,7 +3,6 @@
     <head>
         <title>EtherDraw</title>
         <link rel='stylesheet' href='/static/css/style.css'>
-        <script src='/static/js/draw.js' type='text/paperscript' canvas='sketch'></script>
     </head>
     <body>
         <div id="controls">
@@ -34,12 +33,11 @@
         <script type='text/javascript'>
 
 /* Initialize a new sketch as soon as the DOM is ready
- *
- * TODO Is it save to extract the sketch identifier like that?
  */
 $(function() {
+  'use strict';
   var id = EtherDraw.Util.getIdentifierFromUrl(window.location);
-  var sketch = new EtherDraw.Sketch(id, $(sketch));
+  var sketch = new EtherDraw.Sketch(id, $('sketch'));
 alert('x');
 });
 
