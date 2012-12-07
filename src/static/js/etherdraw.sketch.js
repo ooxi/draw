@@ -102,7 +102,6 @@ EtherDraw.Sketch = EtherDraw.Sketch || function(id, canvas, cb) {
     _timer = _timer || setInterval(function () {
       _io.emit('etherdraw:progress', JSON.stringify(_stroke));
       _stroke.path = [];
-console.log(Math.random());
     }, 100);
   };
 
