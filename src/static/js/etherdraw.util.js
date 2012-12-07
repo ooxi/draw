@@ -24,12 +24,24 @@ var EtherDraw = EtherDraw || {};
 
 EtherDraw.Util = EtherDraw.Util || {
 
-	/**
-	 * Extracts sketch identifier from URL
-	 *
-	 * @param url String An URL like http://draw.etherpad.org/d/my-sketch
-	 * @return Sketch identifier, in the example aboth `my-skety'
-	 */
+  /**
+   * Extracts sketch identifier from URL
+   *
+   * @param url String An URL like http://draw.etherpad.org/d/my-sketch
+   * @return Sketch identifier, in the example aboth `my-skety'
+   */
+  getIdentifierFromUrl: function(url) {
+    url = ''+ url;
+    var lastSlash = url.lastIndexOf('/');
+
+    if (-1 === lastSlash) {
+      throw 'Cannot extract sketch identifier';
+    }
+    return url.substring(lastSlash);
+  }
+
+
+
 
 };
 

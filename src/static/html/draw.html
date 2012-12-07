@@ -38,14 +38,7 @@
  * TODO Is it save to extract the sketch identifier like that?
  */
 $(function() {
-  var lastSlash = window.location.lastIndexOf('/');
-
-  if (-1 === lastSlash) {
-    throw 'Cannot extract sketch identifier';
-  }
-  var sketchId = window.location.substring(lastSlash);
-
-  alert(sketchId);
+  alert(EtherDraw.Util.getIdentifierFromUrl(window.location));
 });
 
         </script>
