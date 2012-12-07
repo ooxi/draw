@@ -111,7 +111,7 @@ EtherDraw.Sketch = EtherDraw.Sketch || function(id, canvas, cb) {
 
   _tool.onMouseDrag = function(event) {
     var step = event.delta / 2;
-console.log(step);
+console.log(event);
 //    step.angle += 90;
 
     var top = event.middlePoint + step;
