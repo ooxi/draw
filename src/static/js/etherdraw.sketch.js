@@ -113,6 +113,7 @@ console.log('mouse drag');
     _path.add(top);
     _path.insert(0, bottom);
     _path.smooth();
+console.log(_path);
     paper.view.draw();
 
     // Add data to path
