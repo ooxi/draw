@@ -66,8 +66,26 @@ exports.Server = function(configuration, cb) {
    * Will be invoked as soon as a client wants to receive updates about a sketch
    */
   var onJoin = function(socket, id) {
+
+    /* TODO Do real santanization
+     */
+    if ('string' !== typeof(id)) {
+      throw 'Illegal sketch id';
+    }
+
+    /* From now on the client will only be interested in this sketch
+     */
+    socket.join(id);
+
+    /* Load client and provide him with initial updates
+     */
     getSketch(id, function(sketch) {
-// TODO
+      var client = socket.get('client');
+      var updates = sketch.updates(client);
+
+      for (var i = 0; i < updates.length; ++i) {
+        socket.emit('etherpad.stroke', updates[i]);
+      }
     });
   };
 
