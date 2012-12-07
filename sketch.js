@@ -29,7 +29,7 @@
  * @warning Absolute authority over the sketch is assumed. Multiple processes
  *     accessing the same sketch will result in manslaughter
  */
-exports.sketch = function(db, id, cb) {
+exports.Sketch = function(db, id, cb) {
 
   /**
    * Strokes stored on persistent medium

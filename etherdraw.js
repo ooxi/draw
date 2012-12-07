@@ -75,7 +75,7 @@ exports.Server = function(configuration, cb) {
     /* Sketch has to be loaded from persistence layer
      */
     } else {
-      _sketches[id] = new Sketch(_db, id, function(err) {
+      _sketches[id] = new sketch.Sketch(_db, id, function(err) {
         if (err) throw err;
         cb(_sketches[id]);
       });
