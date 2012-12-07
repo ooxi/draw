@@ -118,7 +118,7 @@ EtherDraw.Sketch = EtherDraw.Sketch || function(id, canvas, cb) {
 
     var top = {
         x: event.middlePoint.x + step.x,
-        y: event.middlePoint.y + setp.y
+        y: event.middlePoint.y + step.y
     };
     var bottom = {
         x: event.middlePoint.x - step.x,
