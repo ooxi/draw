@@ -67,7 +67,7 @@ exports.Server = function(configuration, cb) {
    */
   var onJoin = function(socket, id) {
     getSketch(id, function(sketch) {
-      sketch.
+// TODO
     });
   };
 
