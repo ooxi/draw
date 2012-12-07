@@ -65,7 +65,7 @@ exports.Server = function(configuration, cb) {
   /**
    * Will be invoked as soon as a client wants to receive updates about a sketch
    */
-  var onJoin = function(socket, id) {
+  var onJoin = function(client, socket, id) {
 
     /* TODO Do real santanization
      */
@@ -75,7 +75,6 @@ exports.Server = function(configuration, cb) {
 
     /* From now on the client will only be interested in this sketch
      */
-    var client = socket.get('client');
     console.log('[I]\tClient '+ client +' joined '+ id);
     socket.join(id);
 
@@ -98,9 +97,9 @@ exports.Server = function(configuration, cb) {
   var onConnection = function(socket) {
     console.log('[I]\tClient connected');
 
-    socket.set('client', uuid.v4());
+    var client = uuid.v4();
     socket.on('etherdraw.join', function(id) {
-      onJoin(socket, id);
+      onJoin(client, socket, id);
     });
   };
 
