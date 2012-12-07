@@ -110,12 +110,20 @@ EtherDraw.Sketch = EtherDraw.Sketch || function(id, canvas, cb) {
 
 
   _tool.onMouseDrag = function(event) {
-    var step = event.delta / 2;
-console.log(event.delta);
+    var step = {
+        x: event.delta.x / 2,
+        y: event.delta.y / 2
+    };
 //    step.angle += 90;
 
-    var top = event.middlePoint + step;
-    var bottom = event.middlePoint - step;
+    var top = {
+        x: event.middlePoint.x + step.x,
+        y: event.middlePoint.y + setp.y
+    };
+    var bottom = {
+        x: event.middlePoint.x - step.x,
+        y: event.middlePoint.y - step.y
+    };
 
     _path.add(top);
     _path.insert(0, bottom);
