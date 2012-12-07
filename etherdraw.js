@@ -63,6 +63,28 @@ exports.Server = function(configuration, cb) {
 
 
   /**
+   * Loads a sketch from persistence layer
+   */
+  var getSketch = function(id, cb) {
+
+    /* Sketch already in cache
+     */
+    if (_sketches.hasOwnProperty(id)) {
+      cb(_sketches[id]);
+
+    /* Sketch has to be loaded from persistence layer
+     */
+    } else {
+      _sketches[id] = new Sketch(_db, id, function(err) {
+        if (err) throw err;
+        cb(_sketches[id]);
+      });
+    }
+  };
+
+
+
+  /**
    * Will be invoked as soon as a client wants to receive updates about a sketch
    */
   var onJoin = function(client, socket, id) {
