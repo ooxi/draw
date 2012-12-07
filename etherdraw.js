@@ -55,10 +55,12 @@ exports.Server = function(configuration, cb) {
 
 
 
-  /* Will be invoked as soon as a client connects to a sketch
+  /**
+   * Will be invoked as soon as a client connects to a sketch
    */
   var onConnection = function(socket) {
-    console.log('Client connected');
+    console.log('[I]\tClient connected');
+    socket.on('etherpad.join', onJoin);
   };
 
 
