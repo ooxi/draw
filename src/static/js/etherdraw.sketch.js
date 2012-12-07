@@ -64,7 +64,7 @@ EtherDraw.Sketch = EtherDraw.Sketch || function(id, canvas, cb) {
 
 
 
-/*
+
   // Create a Paper.js Path to draw a line into it:
   
 
@@ -81,7 +81,6 @@ EtherDraw.Sketch = EtherDraw.Sketch || function(id, canvas, cb) {
 
   // Draw the view now:
   paper.view.draw();
-*/
 
 };
 

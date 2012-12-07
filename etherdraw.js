@@ -16,8 +16,10 @@
 'use strict';
 var async = require('async');
 var express = require('express');
+var sketch = require('./sketch.js');
 var socket = require('socket.io');
 var ueberDB = require('ueberDB');
+var uuid = require('node-uuid');
 
 
 
@@ -51,7 +53,23 @@ exports.Server = function(configuration, cb) {
    */
   var _io;
 
+  /**
+   * All sketches, referenced by id
+   */
+  var _sketches = {};
 
+
+
+
+
+  /**
+   * Will be invoked as soon as a client wants to receive updates about a sketch
+   */
+  var onJoin = function(socket, id) {
+    getSketch(id, function(sketch) {
+      sketch.
+    });
+  };
 
 
 
@@ -60,7 +78,11 @@ exports.Server = function(configuration, cb) {
    */
   var onConnection = function(socket) {
     console.log('[I]\tClient connected');
-    socket.on('etherpad.join', onJoin);
+
+    socket.set('client', uuid.v4());
+    socket.on('etherpad.join', function(id) {
+      onJoin(socket, id);
+    });
   };
 
 

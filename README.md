@@ -11,6 +11,7 @@ Requirements
  * [Express](http://expressjs.com/)
  * [Socket IO](http://socket.io/)
  * [ueberDB](https://github.com/Pita/ueberDB)
+ * [node-uuid](https://github.com/broofa/node-uuid/)
 
 Demo
 ----
