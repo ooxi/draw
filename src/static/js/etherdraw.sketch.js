@@ -71,21 +71,71 @@ EtherDraw.Sketch = EtherDraw.Sketch || function(id, canvas, cb) {
   /* Register paper.js handler
    */
   _tool.onMouseDown = function(event) {
-    console.log(event);
-//    path = new paper.Path();
-//    path.fillColor = active_color_rgb;
-//    path.add(event.point);
-//    view.draw();
-//
-//    // The data we will send every 100ms on mouse drag
-//    path_to_send = {
-//        rgba: active_color_json,
-//        start: event.point,
-//        path: []
-//    };
+    path = new paper.Path();
+    path.fillColor = active_color_rgb;
+    path.add(event.point);
+    view.draw();
+
+    // The data we will send every 100ms on mouse drag
+    path_to_send = {
+        rgba: active_color_json,
+        start: event.point,
+        path: []
+    };
   };
 
 
+
+  _tool.onMouseDrag = function(event) {
+    var step = event.delta / 2;
+    step.angle += 90;
+
+    var top = event.middlePoint + step;
+    var bottom = event.middlePoint - step;
+
+    path.add(top);
+    path.insert(0, bottom);
+    path.smooth();
+    view.draw();
+
+    // Add data to path
+    path_to_send.path.push({
+        top: top,
+        bottom: bottom
+    });
+
+    // Send paths every 100ms
+    if (!timer_is_active) {
+
+      send_paths_timer = setInterval(function () {
+
+        socket.emit('draw:progress', uid, JSON.stringify(path_to_send));
+        path_to_send.path = new Array();
+
+      }, 100);
+    }
+
+    timer_is_active = true;
+  };
+
+
+
+  _tool.onMouseUp = function(event) {
+    // Close the users path
+    path.add(event.point);
+    path.closed = true;
+    path.smooth();
+    view.draw();
+
+    // Send the path to other users
+    path_to_send.end = event.point;
+    socket.emit('draw:end', uid, JSON.stringify(path_to_send));
+
+    // Stop new path data being added & sent
+    clearInterval(send_paths_timer);
+    path_to_send.path = new Array();
+    timer_is_active = false;
+  };
 
 
 
