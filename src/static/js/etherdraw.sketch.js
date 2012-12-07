@@ -52,7 +52,7 @@ EtherDraw.Sketch = EtherDraw.Sketch || function(id, canvas, cb) {
    */
   paper.setup(canvas);
   var _path = null;
-  var _stoke = null;
+  var _stroke = null;
   var _timer = null;
   var _tool = new paper.Tool();
 
