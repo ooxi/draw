@@ -114,14 +114,32 @@ exports.Server = function(configuration, cb) {
 
 
   /**
+   * Will be invoked for every new stroke
+   */
+  var onStroke = function(client, socket, stroke) {
+
+    /* TODO Do real santanization
+     */
+    if ('object' !== typeof(stroke)) {
+      throw 'Illegal sketch id';
+    }
+
+  };
+
+
+
+  /**
    * Will be invoked as soon as a client connects to a sketch
    */
   var onConnection = function(socket) {
     console.log('[I]\tClient connected');
-
     var client = uuid.v4();
+
     socket.on('etherdraw.join', function(id) {
       onJoin(client, socket, id);
+    });
+    socket.on('etherdraw.progress', function(stroke) {
+      onStroke(client, socket, JSON.parse(stroke));
     });
   };
 
