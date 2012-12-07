@@ -73,6 +73,7 @@ EtherDraw.Sketch = EtherDraw.Sketch || function(id, canvas, cb) {
   /* Register paper.js handler
    */
   _tool.onMouseDown = function(event) {
+console.log('mouse down');
     _path = new paper.Path();
     _path.fillColor = {"red":0.42745098039215684,"green":0.28627450980392155,"blue":0.1450980392156863,"opacity":0.7843137254901961};
     _path.add(event.point);
@@ -89,6 +90,7 @@ EtherDraw.Sketch = EtherDraw.Sketch || function(id, canvas, cb) {
 
 
   _tool.onMouseDrag = function(event) {
+console.log('mouse drag');
     var step = event.delta / 2;
     step.angle += 90;
 
@@ -116,6 +118,7 @@ EtherDraw.Sketch = EtherDraw.Sketch || function(id, canvas, cb) {
 
 
   _tool.onMouseUp = function(event) {
+console.log('mouse up');
 
     // Close the users path
     _path.add(event.point);
