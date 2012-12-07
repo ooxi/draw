@@ -90,7 +90,6 @@ EtherDraw.Sketch = EtherDraw.Sketch || function(id, canvas, cb) {
 //    _path.fillColor = {"red":0.42745098039215684,"green":0.28627450980392155,"blue":0.1450980392156863,"opacity":0.7843137254901961};
     _path.fillColor = 'black'; //new paper.RgbColor(0.42745098039215684, 0.28627450980392155, 0.1450980392156863, 0.7843137254901961);
     _path.strokeColor = 'black';
-console.log(event.point);
     _path.add(event.point);
     paper.view.draw();
 
@@ -116,7 +115,8 @@ console.log(event.point);
 
     var top = event.middlePoint + step;
     var bottom = event.middlePoint - step;
-
+console.log(top);
+console.log(bottom);
     _path.add(top);
     _path.insert(0, bottom);
     _path.smooth();
