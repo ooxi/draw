@@ -58,7 +58,6 @@ EtherDraw.Sketch = EtherDraw.Sketch || function(id, canvas, cb) {
   /* Register callbacks as soon as connection is established
    */
   _io.on('connect', function(socket) {
-alert(id);
     _io.emit('etherdraw.join', id);
     cb();
   });
