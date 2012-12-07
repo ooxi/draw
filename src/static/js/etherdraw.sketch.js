@@ -102,7 +102,6 @@ EtherDraw.Sketch = EtherDraw.Sketch || function(id, canvas, cb) {
 
 
   _tool.onMouseDrag = function(event) {
-console.log('mouse drag');
     var step = event.delta / 2;
     step.angle += 90;
 
@@ -130,7 +129,6 @@ console.log('mouse drag');
 
 
   _tool.onMouseUp = function(event) {
-console.log('mouse up');
 
     // Close the users path
     _path.add(event.point);
