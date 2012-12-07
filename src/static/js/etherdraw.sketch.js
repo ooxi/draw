@@ -69,15 +69,15 @@ EtherDraw.Sketch = EtherDraw.Sketch || function(id, canvas, cb) {
   
 
   // Give the stroke a color
-  path.strokeColor = 'black';
+  _path.strokeColor = 'black';
   var start = new paper.Point(100, 100);
 
   // Move to start and draw a line from there
-  path.moveTo(start);
+  _path.moveTo(start);
 
   // Note that the plus operator on Point objects does not work
   // in JavaScript. Instead, we need to call the add() function:
-  path.lineTo(start.add([ 200, -50 ]));
+  _path.lineTo(start.add([ 200, -50 ]));
 
   // Draw the view now:
   paper.view.draw();
