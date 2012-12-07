@@ -51,7 +51,7 @@ EtherDraw.Sketch = EtherDraw.Sketch || function(id, canvas, cb) {
    * Initialize canvas
    */
   paper.setup(canvas);
-  var _path = new paper.Path();
+  var _path = null;
   var _tool = new paper.Tool();
 
 
@@ -71,8 +71,8 @@ EtherDraw.Sketch = EtherDraw.Sketch || function(id, canvas, cb) {
   /* Register paper.js handler
    */
   _tool.onMouseDown = function(event) {
-    path = new paper.Path();
-    path.fillColor = active_color_rgb;
+    _path = new paper.Path();
+    _path.fillColor = {"red":0.42745098039215684,"green":0.28627450980392155,"blue":0.1450980392156863,"opacity":0.7843137254901961};
     path.add(event.point);
     view.draw();
 
