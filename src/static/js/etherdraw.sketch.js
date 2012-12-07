@@ -18,3 +18,12 @@
 
 
 
+
+/**
+ * Represents one sketch
+ */
+var EtherDraw = EtherDraw || {};
+
+EtherDraw.Sketch = EtherDraw.Sketch || function(id, dom) {
+};
+
