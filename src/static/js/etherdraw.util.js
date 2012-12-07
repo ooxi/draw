@@ -41,7 +41,7 @@ EtherDraw.Util = EtherDraw.Util || {
     if (-1 === lastSlash) {
       throw 'Cannot extract sketch identifier';
     }
-    return url.substring(lastSlash);
+    return url.substring(lastSlash + 1);
   }
 
 
