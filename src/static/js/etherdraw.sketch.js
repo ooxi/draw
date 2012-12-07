@@ -21,10 +21,17 @@
 
 /**
  * Represents a sketch
+ *
+ * @param id String Sketch identifier
+ * @param convas DOM Object to draw on
+ * @param cb Function Will be invoked as soon as sketch is initialized (not
+ *     necessarly drawn)
  */
 var EtherDraw = EtherDraw || {};
 
-EtherDraw.Sketch = EtherDraw.Sketch || function(id, canvas) {
+EtherDraw.Sketch = EtherDraw.Sketch || function(id, canvas, cb) {
+
+
 
   /**
    * Establish backend connection
@@ -36,6 +43,24 @@ EtherDraw.Sketch = EtherDraw.Sketch || function(id, canvas) {
    */
   paper.setup(canvas);
   var _path = new paper.Path();
+
+
+
+  /* Register callbacks as soon as connection is established
+   */
+  _io.on('connection', function(socket) {
+    cb();
+  });
+
+
+
+
+
+
+
+
+
+
 
 
 /*
