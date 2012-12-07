@@ -17,12 +17,16 @@
 
 
 
+
+
 /**
  * Miscellaneous utility functions
  */
 var EtherDraw = EtherDraw || {};
 
 EtherDraw.Util = EtherDraw.Util || {
+
+
 
   /**
    * Extracts sketch identifier from URL
