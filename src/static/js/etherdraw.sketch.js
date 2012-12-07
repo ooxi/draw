@@ -91,12 +91,19 @@ EtherDraw.Sketch = EtherDraw.Sketch || function(id, canvas, cb) {
     _path.add(event.point);
     paper.view.draw();
 
-    // The data we will send every 100ms on mouse drag
+    // The data we will send every 100ms
     _stroke = {
         rgba: {"red":0.42745098039215684,"green":0.28627450980392155,"blue":0.1450980392156863,"opacity":0.7843137254901961},
         start: event.point,
         path: []
     };
+
+    // Send paths every 100ms
+    _timer = _timer || setInterval(function () {
+      _io.emit('etherdraw:progress', JSON.stringify(_stroke));
+      _stroke.path = [];
+console.log(Math.random());
+    }, 100);
   };
 
 
@@ -118,13 +125,6 @@ EtherDraw.Sketch = EtherDraw.Sketch || function(id, canvas, cb) {
         top: top,
         bottom: bottom
     });
-
-    // Send paths every 100ms
-    _timer = _timer || setInterval(function () {
-      _io.emit('etherdraw:progress', JSON.stringify(_stroke));
-      _stroke.path = [];
-console.log(Math.random());
-    }, 100);
   };
 
 
