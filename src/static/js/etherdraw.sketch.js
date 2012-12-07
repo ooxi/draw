@@ -51,10 +51,23 @@ EtherDraw.Sketch = EtherDraw.Sketch || function(id, canvas, cb) {
    * Initialize canvas
    */
   paper.setup(canvas);
-  var _path = null;
+
+  /**
+   * Initialize paper.js tool
+   *
+   * TODO I have no idea what minDistance and maxDistance are doing
+   */
+  var _tool = new paper.Tool();
+  _tool.minDistance = 10;
+  _tool.maxDistance = 45;
+
+  /**
+   * Temporary objects containing state about the stroke the user is currently
+   * commiting
+   */
+    var _path = null;
   var _stroke = null;
   var _timer = null;
-  var _tool = new paper.Tool();
 
 
 
