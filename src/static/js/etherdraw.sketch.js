@@ -24,10 +24,7 @@
  */
 var EtherDraw = EtherDraw || {};
 
-EtherDraw.Sketch = EtherDraw.Sketch || function(id, dom) {
-alert('o');
-  // Get a reference to the canvas object
-  var canvas = document.getElementById('myCanvas');
+EtherDraw.Sketch = EtherDraw.Sketch || function(id, canvas) {
 
   // Create an empty project and a view for the canvas:
   paper.setup(canvas);
