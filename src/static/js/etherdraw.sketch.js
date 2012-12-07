@@ -86,22 +86,6 @@ EtherDraw.Sketch = EtherDraw.Sketch || function(id, canvas, cb) {
   /* Register paper.js handler
    */
   _tool.onMouseDown = function(event) {
-console.log('mouse down');
-
-  var p = new paper.Path();
-  p.strokeColor = 'black';
-  var start = new paper.Point(100, 100);
-
-  // Move to start and draw a line from there
-  p.moveTo(start);
-
-  // Note that the plus operator on Point objects does not work
-  // in JavaScript. Instead, we need to call the add() function:
-  p.lineTo(start.add([ 200, -50 ]));
-
-  // Draw the view now:
-  paper.view.draw();
-
     _path = new paper.Path();
     _path.fillColor = {"red":0.42745098039215684,"green":0.28627450980392155,"blue":0.1450980392156863,"opacity":0.7843137254901961};
     _path.add(event.point);
