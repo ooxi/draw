@@ -33,12 +33,12 @@
 
 /* Initialize a new sketch as soon as the DOM is ready
  */
-$(function() {
+window.load = function() {
   'use strict';
 
   var id = EtherDraw.Util.getIdentifierFromUrl(window.location);
   var sketch = new EtherDraw.Sketch(id, document.getElementById('sketch'));
-});
+};
 
         </script>
     </body>
