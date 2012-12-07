@@ -99,7 +99,7 @@ exports.Server = function(configuration, cb) {
     console.log('[I]\tClient connected');
 
     socket.set('client', uuid.v4());
-    socket.on('etherpad.join', function(id) {
+    socket.on('etherdraw.join', function(id) {
       onJoin(socket, id);
     });
   };
