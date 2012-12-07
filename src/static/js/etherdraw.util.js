@@ -20,7 +20,7 @@
 /**
  * Miscellaneous utility functions
  */
-var EtherDraw = EtherDraw || {};
+EtherDraw = EtherDraw || {};
 
 EtherDraw.Util = EtherDraw.Util || {
 
