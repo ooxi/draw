@@ -70,16 +70,14 @@ exports.Server = function(configuration, cb) {
     /* Sketch already in cache
      */
     if (_sketches.hasOwnProperty(id)) {
-console.log('a');
       cb(_sketches[id]);
 
     /* Sketch has to be loaded from persistence layer
      */
     } else {
-console.log('b');
       _sketches[id] = new sketch.Sketch(_db, id, function(err) {
-console.log('c');
         if (err) throw err;
+console.log('o %j', _sketches);
         cb(_sketches[id]);
       });
     }
