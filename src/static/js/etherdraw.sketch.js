@@ -26,11 +26,21 @@ var EtherDraw = EtherDraw || {};
 
 EtherDraw.Sketch = EtherDraw.Sketch || function(id, canvas) {
 
-  // Create an empty project and a view for the canvas:
-  paper.setup(canvas);
+  /**
+   * Establish backend connection
+   */
+  var _io = io.connect('/');
 
+  /**
+   * Initialize canvas
+   */
+  paper.setup(canvas);
+  var _path = new paper.Path();
+
+
+/*
   // Create a Paper.js Path to draw a line into it:
-  var path = new paper.Path();
+  
 
   // Give the stroke a color
   path.strokeColor = 'black';
@@ -45,6 +55,7 @@ EtherDraw.Sketch = EtherDraw.Sketch || function(id, canvas) {
 
   // Draw the view now:
   paper.view.draw();
+*/
 
 };
 
