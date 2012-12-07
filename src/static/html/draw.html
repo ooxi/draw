@@ -32,8 +32,19 @@
         <script src='/static/js/lib/sketch.js' type='text/javascript'></script>
         <script type='text/javascript'>
 
+/* Initialize a new sketch as soon as the DOM is ready
+ *
+ * TODO Is it save to extract the sketch identifier like that?
+ */
 $(function() {
-  alert(window.location);
+  var lastSlash = window.location.lastIndexOf('/');
+
+  if (-1 === lastSlash) {
+    throw 'Cannot extract sketch identifier';
+  }
+  var sketchId = window.location.substring(lastSlash);
+
+  alert(sketchId);
 });
 
         </script>
