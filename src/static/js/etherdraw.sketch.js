@@ -34,6 +34,15 @@ EtherDraw.Sketch = EtherDraw.Sketch || function(id, canvas, cb) {
 
 
   /**
+   * Callback is optional
+   */
+  cb = 'function' === typeof(cb) ? cb : function(err) {
+    if (err) throw err;
+  };
+
+
+
+  /**
    * Establish backend connection
    */
   var _io = io.connect('/');
